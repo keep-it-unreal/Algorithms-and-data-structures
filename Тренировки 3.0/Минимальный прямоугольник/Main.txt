@@ -1,0 +1,40 @@
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+        int x, y, biggestX, biggestY, lesserX, lesserY;
+
+        Scanner input = new Scanner(System.in);
+
+        int countPoints = input.nextInt();
+        input.nextLine();
+
+        lesserX = biggestX = input.nextInt();
+        lesserY = biggestY = input.nextInt();
+        input.nextLine();
+
+        for (int i = 1; i < countPoints; i++) {
+            x = input.nextInt();
+            y = input.nextInt();
+            input.nextLine();
+
+            if(x < lesserX){
+                lesserX = x;
+            } else if (x > biggestX) {
+                biggestX = x;
+            }
+
+            if(y < lesserY){
+                lesserY = y;
+            } else if (y > biggestY) {
+                biggestY = y;
+            }
+        }
+
+        if(countPoints == 1){
+            System.out.println(lesserX + " " + lesserY);
+        } else {
+            System.out.println(lesserX + " " + lesserY + " " + biggestX + " " + biggestY);
+        }
+    }
+}

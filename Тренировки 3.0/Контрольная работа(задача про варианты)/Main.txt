@@ -1,0 +1,43 @@
+import java.util.*;
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int rowV, sideV;
+        Scanner scanner = new Scanner(System.in);
+        int countChildren = scanner.nextInt();
+        scanner.nextLine();
+        int countVar = scanner.nextInt();
+        scanner.nextLine();
+        int rowP = scanner.nextInt();
+        scanner.nextLine();
+        int sideP = scanner.nextInt();
+
+        int placeP = 2 * (rowP - 1) + sideP;
+
+        if(placeP + countVar <= countChildren && placeP - countVar > 0){
+            int rowAfter = (placeP + countVar - 1) / 2 + 1;
+            int rowBefore = (placeP - countVar - 1) / 2 + 1;
+
+            if(rowAfter - rowP > rowP - rowBefore){
+                rowV = rowBefore;
+                sideV = placeP - countVar - (rowV - 1) * 2;
+            } else {
+                rowV = rowAfter;
+                sideV = placeP + countVar - (rowV - 1) * 2;
+            }
+            System.out.println(rowV + " " + sideV);
+        } else if(placeP + countVar <= countChildren){
+            rowV = (placeP + countVar - 1) / 2 + 1;
+            sideV = placeP + countVar - (rowV - 1) * 2;
+            System.out.println(rowV + " " + sideV);
+        } else if (placeP - countVar > 0) {
+            rowV = (placeP - countVar - 1) / 2 + 1;
+            sideV = placeP - countVar - (rowV - 1) * 2;
+            System.out.println(rowV + " " + sideV);
+        } else {
+            System.out.println(-1);
+        }
+    }
+}
